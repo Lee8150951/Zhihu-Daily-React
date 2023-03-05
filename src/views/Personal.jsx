@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-export const Personal = (props) => {
+const Personal = (props) => {
     /**state部分**/
 
     /**effect部分**/
@@ -16,3 +16,5 @@ export const Personal = (props) => {
         </div>
     );
 };
+
+export default Personal;

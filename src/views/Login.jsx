@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-export const Login = (props) => {
+const Login = (props) => {
     /**state部分**/
 
     /**effect部分**/
@@ -16,3 +16,5 @@ export const Login = (props) => {
         </div>
     );
 };
+
+export default Login;

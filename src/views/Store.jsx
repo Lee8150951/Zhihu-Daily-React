@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-export const Store = (props) => {
+const Store = (props) => {
     /**state部分**/
 
     /**effect部分**/
@@ -16,3 +16,5 @@ export const Store = (props) => {
         </div>
     );
 };
+
+export default Store;

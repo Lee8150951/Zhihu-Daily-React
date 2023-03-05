@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-export const Detail = (props) => {
+const Detail = () => {
     /**state部分**/
 
     /**effect部分**/
@@ -16,3 +16,5 @@ export const Detail = (props) => {
         </div>
     );
 };
+
+export default Detail;

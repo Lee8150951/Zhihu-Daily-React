@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-export const Page404 = (props) => {
+const Page404 = (props) => {
     /**state部分**/
 
     /**effect部分**/
@@ -16,3 +16,5 @@ export const Page404 = (props) => {
         </div>
     );
 };
+
+export default Page404;
