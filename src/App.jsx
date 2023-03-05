@@ -1,5 +1,9 @@
 import logo from './logo.svg';
+import React from "react";
 import './App.css';
+
+// 全局样式
+import './index.less';
 
 function App() {
   return (
@@ -20,6 +24,6 @@ function App() {
       </header>
     </div>
   );
-}
+};
 
 export default App;

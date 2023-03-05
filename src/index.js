@@ -7,9 +7,9 @@ import reportWebVitals from './reportWebVitals';
 // REM配置
 import 'lib-flexible';
 
-// 样式
-import './assets/reset.min.css'
-import './index.less'
+// 配置Antd-Mobile
+import { ConfigProvider } from 'antd-mobile';
+import zhCN from 'antd-mobile/es/locales/zh-CN';
 
 // 处理最大宽度
 (function () {
@@ -28,11 +28,9 @@ import './index.less'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <>
-      <div className="box">
-          Hello World
-      </div>
-  </>
+  <ConfigProvider locale={zhCN}>
+      <App/>
+  </ConfigProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
