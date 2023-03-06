@@ -11,6 +11,10 @@ import 'lib-flexible';
 import { ConfigProvider } from 'antd-mobile';
 import zhCN from 'antd-mobile/es/locales/zh-CN';
 
+// Redux配置
+import { Provider } from 'react-redux';
+import store from './store';
+
 // 处理最大宽度
 (function () {
     const handleMax = () => {
@@ -29,7 +33,9 @@ import zhCN from 'antd-mobile/es/locales/zh-CN';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ConfigProvider locale={zhCN}>
-      <App/>
+      <Provider store={store}>
+          <App/>
+      </Provider>
   </ConfigProvider>
 );
 
