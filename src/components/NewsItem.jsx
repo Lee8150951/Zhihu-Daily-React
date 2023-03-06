@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-const Detail = () => {
+const NewsItem = (props) => {
   /** state部分 **/
 
   /** effect部分 **/
@@ -11,10 +11,10 @@ const Detail = () => {
 
   /** render **/
   return (
-    <div className={"Detail"}>
-      详情页
+    <div className={"news-item-box"}>
+      每条新闻
     </div>
   );
 };
 
-export default Detail;
+export default NewsItem;

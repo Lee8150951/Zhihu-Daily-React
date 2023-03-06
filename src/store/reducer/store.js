@@ -4,13 +4,13 @@ import _ from '../../assets/utils';
 
 // 配置初始信息
 let initial = {
-    info: null
+  info: null
 };
 
-export default function storeReducer(state=initial, action) {
-    state = _.clone(state);
-    switch (action.type) {
-        default:
-    }
-    return state
+export default function storeReducer(state = initial, action) {
+  state = _.clone(state);
+  switch (action.type) {
+    default:
+  }
+  return state
 };

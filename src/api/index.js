@@ -3,42 +3,42 @@ import http from './http';
 
 // 获取今日新闻 & 轮播图信息
 const queryNewsLatest = () => {
-    return http.get('/api/new_latest');
+  return http.get('/api/new_latest');
 };
 
 // 获取往日新闻信息
 const queryNewsBefore = (time) => {
-    return http.get('/api/news_before', {
-       params: {
-           time
-       }
-    });
+  return http.get('/api/news_before', {
+    params: {
+      time
+    }
+  });
 };
 
 // 获取新闻详细信息
 const queryNewsInfo = (id) => {
-    return http.get('/api/news_info', {
-        params: {
-            id
-        }
-    });
+  return http.get('/api/news_info', {
+    params: {
+      id
+    }
+  });
 };
 
 // 获取新闻点赞信息
 const queryStoryExtra = (id) => {
-    return http.get('/api/story_extra', {
-        params: {
-            id
-        }
-    });
+  return http.get('/api/story_extra', {
+    params: {
+      id
+    }
+  });
 };
 
 // 暴露API
 const api = {
-    queryNewsBefore,
-    queryNewsLatest,
-    queryStoryExtra,
-    queryNewsInfo
+  queryNewsBefore,
+  queryNewsLatest,
+  queryStoryExtra,
+  queryNewsInfo
 };
 
 export default api

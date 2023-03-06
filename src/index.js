@@ -17,25 +17,25 @@ import store from './store';
 
 // 处理最大宽度
 (function () {
-    const handleMax = () => {
-        let html = document.documentElement,
-            root = document.getElementById('root'),
-            deviceW = html.clientWidth;
-        root.style.maxWidth = '750px';
-        if (deviceW >= 750) {
-            html.style.fontSize = '75px';
-        }
-    };
-    handleMax();
-    window.addEventListener('resize', handleMax);
+  const handleMax = () => {
+    let html = document.documentElement,
+      root = document.getElementById('root'),
+      deviceW = html.clientWidth;
+    root.style.maxWidth = '750px';
+    if (deviceW >= 750) {
+      html.style.fontSize = '75px';
+    }
+  };
+  handleMax();
+  window.addEventListener('resize', handleMax);
 })()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ConfigProvider locale={zhCN}>
-      <Provider store={store}>
-          <App/>
-      </Provider>
+    <Provider store={store}>
+      <App/>
+    </Provider>
   </ConfigProvider>
 );
 
