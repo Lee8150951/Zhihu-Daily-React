@@ -3,7 +3,7 @@ import http from './http';
 
 // 获取今日新闻 & 轮播图信息
 const queryNewsLatest = () => {
-  return http.get('/api/new_latest');
+  return http.get('/api/news_latest');
 };
 
 // 获取往日新闻信息

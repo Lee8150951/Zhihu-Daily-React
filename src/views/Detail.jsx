@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 const Detail = () => {
   /** state部分 **/
@@ -12,7 +12,7 @@ const Detail = () => {
   /** render **/
   return (
     <div className={"Detail"}>
-      详情页
+      臭阿超
     </div>
   );
 };
