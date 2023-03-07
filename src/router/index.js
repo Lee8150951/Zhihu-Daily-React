@@ -18,7 +18,7 @@ const Element = function Element(props) {
     [usp] = useSearchParams();
 
   return (
-    <Component navigate={navigate} location={location} param={params} usp={usp}/>
+    <Component navigate={navigate} location={location} params={params} usp={usp}/>
   );
 };
 

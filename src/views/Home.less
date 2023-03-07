@@ -1,5 +1,5 @@
 .home-box {
-
+  /* 轮播图 */
   .swiper-box {
     box-sizing: border-box;
     width: 750px;
@@ -15,10 +15,17 @@
         height: 100%;
       }
 
-      img {
+      .adm-image, img {
         display: block;
         width: 100%;
         height: 100%;
+
+        .adm-image-tip {
+          svg {
+            width: 20%;
+            height: 20%;
+          }
+        }
       }
 
       .desc {
@@ -61,6 +68,39 @@
           background-color: #fff;
         }
       }
+    }
+  }
+
+  /* 新闻列表 */
+  .news-box {
+    padding: 10px 30px;
+
+    .adm-divider-left {
+      &.adm-divider-horizontal {
+        &:before{
+          max-width: 0%;
+        }
+      }
+    }
+
+    .adm-divider-content {
+      font-size: 20px;
+    }
+  }
+
+  /* 加载更多 */
+  .loadmore-box {
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    background-color: #EEEEEE;
+    font-size: 24px;
+    color: #999999;
+
+    .adm-dot-loading {
+      position: static;
+      transform: none;
+      font-size: 24px;
     }
   }
 }

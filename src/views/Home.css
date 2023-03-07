@@ -1,3 +1,8 @@
+.home-box {
+  /* 轮播图 */
+  /* 新闻列表 */
+  /* 加载更多 */
+}
 .home-box .swiper-box {
   box-sizing: border-box;
   width: 750px;
@@ -12,10 +17,16 @@
   display: block;
   height: 100%;
 }
+.home-box .swiper-box .adm-swiper .adm-image,
 .home-box .swiper-box .adm-swiper img {
   display: block;
   width: 100%;
   height: 100%;
+}
+.home-box .swiper-box .adm-swiper .adm-image .adm-image-tip svg,
+.home-box .swiper-box .adm-swiper img .adm-image-tip svg {
+  width: 20%;
+  height: 20%;
 }
 .home-box .swiper-box .adm-swiper .desc {
   position: absolute;
@@ -51,5 +62,27 @@
 .home-box .swiper-box .adm-swiper .adm-page-indicator-dot.adm-page-indicator-dot-active {
   width: 36px;
   background-color: #fff;
+}
+.home-box .news-box {
+  padding: 10px 30px;
+}
+.home-box .news-box .adm-divider-left.adm-divider-horizontal:before {
+  max-width: 0%;
+}
+.home-box .news-box .adm-divider-content {
+  font-size: 20px;
+}
+.home-box .loadmore-box {
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  background-color: #EEEEEE;
+  font-size: 24px;
+  color: #999999;
+}
+.home-box .loadmore-box .adm-dot-loading {
+  position: static;
+  transform: none;
+  font-size: 24px;
 }
 /*# sourceMappingURL=Home.css.map */

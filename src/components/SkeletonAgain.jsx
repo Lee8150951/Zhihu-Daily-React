@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Skeleton } from 'antd-mobile';
+import './SkeletonAgain.less';
 
 const SkeletonAgain = (props) => {
   /**state部分**/
