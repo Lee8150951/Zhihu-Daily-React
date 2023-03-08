@@ -3,15 +3,15 @@ import { Skeleton } from 'antd-mobile';
 import './SkeletonAgain.less';
 
 const SkeletonAgain = (props) => {
-  /**state部分**/
+  /** state部分 **/
 
-  /**effect部分**/
+  /** effect部分 **/
 
-  /**methods部分**/
+  /** methods部分 **/
 
-  /**styles部分**/
+  /** styles部分 **/
 
-  /**render**/
+  /** render **/
   return (
     <div className="skeleton-again-box">
       <Skeleton.Title animated/>

@@ -33,12 +33,29 @@ const queryStoryExtra = (id) => {
   });
 };
 
+// 发送验证码
+const sendPhoneCode = (phone) => {
+  return http.post('/api/phone_code', {
+    phone
+  });
+};
+
+// 登录或注册
+const login = (phone, code) => {
+  return http.post('/api/login', {
+    phone,
+    code
+  });
+};
+
 // 暴露API
 const api = {
   queryNewsBefore,
   queryNewsLatest,
   queryStoryExtra,
-  queryNewsInfo
+  queryNewsInfo,
+  sendPhoneCode,
+  login
 };
 
 export default api

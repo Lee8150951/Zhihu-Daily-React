@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavBar } from 'antd-mobile';
 import PropTypes from 'prop-types';
+import './NavBarAgain.less';
 
 const NavBarAgain = (props) => {
   let { title } = props
@@ -17,7 +18,7 @@ const NavBarAgain = (props) => {
 
   /** render **/
   return (
-    <NavBar onBack={handleBack}>
+    <NavBar className={"navbar-again-box"} onBack={handleBack}>
       {title}
     </NavBar>
   );
