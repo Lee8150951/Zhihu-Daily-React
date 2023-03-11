@@ -48,6 +48,11 @@ const login = (phone, code) => {
   });
 };
 
+// 获取用户信息
+const queryUserInfo = () => {
+  return http.get('/api/user_info');
+}
+
 // 暴露API
 const api = {
   queryNewsBefore,
@@ -55,7 +60,8 @@ const api = {
   queryStoryExtra,
   queryNewsInfo,
   sendPhoneCode,
-  login
+  login,
+  queryUserInfo
 };
 
 export default api

@@ -14,7 +14,7 @@ const http = function http(config) {
     body: null,
     params: null,
     responseType: 'json',
-    signal: null
+    signal: null,
   }, config);
   if (!config.url) throw new TypeError('url must be required');
   if (!_.isPlainObject(config.headers)) config.headers = {};
@@ -48,7 +48,7 @@ const http = function http(config) {
     credentials,
     headers,
     cache: 'no-cache',
-    signal
+    signal,
   };
   if (/^(POST|PUT|PATCH)$/i.test(method) && body) config.body = body;
   return fetch(url, config)
@@ -74,20 +74,20 @@ const http = function http(config) {
       return Promise.reject({
         code: -100,
         status,
-        statusText
+        statusText,
       });
     })
     .catch(reason => {
       Toast.show({
         icon: 'fail',
-        content: '网络繁忙,请稍后再试!'
+        content: '网络繁忙,请稍后再试!',
       });
       return Promise.reject(reason);
     });
 };
 
 /* 快捷方法 */
-["GET", "HEAD", "DELETE", "OPTIONS"].forEach(item => {
+['GET', 'HEAD', 'DELETE', 'OPTIONS'].forEach(item => {
   http[item.toLowerCase()] = function (url, config) {
     if (!_.isPlainObject(config)) config = {};
     config['url'] = url;
@@ -95,7 +95,7 @@ const http = function http(config) {
     return http(config);
   };
 });
-["POST", "PUT", "PATCH"].forEach(item => {
+['POST', 'PUT', 'PATCH'].forEach(item => {
   http[item.toLowerCase()] = function (url, body, config) {
     if (!_.isPlainObject(config)) config = {};
     config['url'] = url;
