@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import { RightOutline } from 'antd-mobile-icons';
 import { Link } from 'react-router-dom';
 import NavBarAgain from '../components/NavBarAgain';
 import { connect } from 'react-redux';
 import action from '../store/actions';
+import './Personal.less';
 
 const Personal = (props) => {
   /** state部分 **/
@@ -15,44 +15,9 @@ const Personal = (props) => {
   const signout = () => {
   };
 
-  /** styles部分 **/
-  const PersonalBox = styled.div`
-    .baseInfo {
-      box-sizing: border-box;
-      margin: 40px 0;
-
-      .pic {
-        display: block;
-        margin: 0 auto;
-        width: 172px;
-        height: 172px;
-        border-radius: 50%;
-      }
-
-      .name {
-        line-height: 100px;
-        font-size: 36px;
-        text-align: center;
-        color: #000;
-      }
-    }
-
-    .tab {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 30px;
-      height: 80px;
-      line-height: 80px;
-      font-size: 28px;
-      color: #000;
-      border-bottom: 2px solid #EEE;
-    }
-  `;
-
   /** render **/
   return (
-    <PersonalBox>
+    <div className={"personal-box"}>
       <NavBarAgain title="个人中心"/>
       <div className="baseInfo">
         <Link to="/update">
@@ -70,7 +35,7 @@ const Personal = (props) => {
           <RightOutline/>
         </div>
       </div>
-    </PersonalBox>
+    </div>
   );
 };
 

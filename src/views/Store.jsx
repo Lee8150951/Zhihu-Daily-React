@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import './Store.less';
 import SkeletonAgain from '../components/SkeletonAgain';
 import NavBarAgain from '../components/NavBarAgain';
 import NewsItem from '../components/NewsItem';
@@ -16,16 +16,9 @@ const Store = (props) => {
   /** methods部分 **/
   const handleRemove = () => {};
 
-  /** styles部分 **/
-  const StoreBox = styled.div`
-    .box {
-      padding: 30px;
-    }
-  `;
-
   /** render **/
   return (
-    <StoreBox>
+    <div className={"store-box"}>
       <NavBarAgain title="我的收藏"/>
       {storeList ?
         <div className="box">
@@ -43,7 +36,7 @@ const Store = (props) => {
         </div> :
         <SkeletonAgain/>
       }
-    </StoreBox>
+    </div>
   );
 };
 

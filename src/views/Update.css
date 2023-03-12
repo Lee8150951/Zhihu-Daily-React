@@ -1,0 +1,25 @@
+.update-box .formBox {
+  padding: 30px;
+}
+.update-box .formBox .item {
+  display: flex;
+  align-items: center;
+  height: 110px;
+  line-height: 110px;
+  font-size: 28px;
+}
+.update-box .formBox .item .label {
+  width: 20%;
+  text-align: center;
+}
+.update-box .formBox .item .input {
+  width: 80%;
+}
+.update-box .submit {
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+  height: 70px;
+  font-size: 28px;
+}
+/*# sourceMappingURL=Update.css.map */

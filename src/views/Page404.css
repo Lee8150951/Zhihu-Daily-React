@@ -1,0 +1,20 @@
+.page404-box {
+  padding-top: 100px;
+  font-size: 40px;
+}
+.page404-box .adm-error-block-image {
+  height: 400px;
+}
+.page404-box .adm-error-block-description,
+.page404-box .adm-error-block-description-title {
+  font-size: 28px;
+}
+.page404-box .btn {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+.page404-box .btn .adm-button {
+  margin: 0 20px;
+}
+/*# sourceMappingURL=Page404.css.map */
