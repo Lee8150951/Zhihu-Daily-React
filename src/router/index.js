@@ -16,7 +16,17 @@ const Element = function Element(props) {
   let isShow = !isCheckLogin(path);
   let [_, setRandom] = useState(0);
 
-  // 登录态校验
+  // 修改页面的TITLE
+  let { title = '知乎日报-WebApp' } = meta || {};
+  document.title = title;
+
+  // 获取路由信息,基于属性传递给组件
+  const navigate = useNavigate(),
+    location = useLocation(),
+    params = useParams(),
+    [usp] = useSearchParams();
+
+  /** effect部分 **/
   useEffect(() => {
     if (isShow) return;
     (async () => {
@@ -41,16 +51,7 @@ const Element = function Element(props) {
     })();
   });
 
-  // 修改页面的TITLE
-  let { title = '知乎日报-WebApp' } = meta || {};
-  document.title = title;
-
-  // 获取路由信息,基于属性传递给组件
-  const navigate = useNavigate(),
-    location = useLocation(),
-    params = useParams(),
-    [usp] = useSearchParams();
-
+  /** render **/
   return (
     <div>
       {isShow ?
@@ -62,6 +63,7 @@ const Element = function Element(props) {
     </div>
   );
 };
+
 export default function RouterView() {
   return (
     <Suspense fallback={
@@ -73,6 +75,7 @@ export default function RouterView() {
         {routes.map(item => {
           let { name, path } = item;
           return (
+            /* Element不能返回Promise实例 */
             <Route key={name} path={path} element={<Element {...item} />}/>
           );
         })}

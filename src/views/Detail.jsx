@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { LeftOutline, LikeOutline, MessageOutline, MoreOutline, StarOutline } from 'antd-mobile-icons';
-import { Badge } from 'antd-mobile';
+import { Badge, Toast } from 'antd-mobile';
 import './Detail.less';
 import api from '../api';
 import SkeletonAgain from '../components/SkeletonAgain';
 import { flushSync } from 'react-dom';
+import { connect } from 'react-redux';
+import action from '../store/actions';
 
 const Detail = (props) => {
   let { navigate, params } = props;
   let link;
+  let { base: { info: userInfo }, queryUserInfoAsync, location, store: { list: storeList }, queryStoreListAsync, removeStoreListById } = props;
+
   /** state部分 **/
   let [info, setInfo] = useState(null),
     [extra, setExtra] = useState(null);
@@ -43,6 +47,21 @@ const Detail = (props) => {
     })();
   }, []);
 
+  // 同步登录者信息
+  useEffect(() => {
+    (async () => {
+      // 登录信息如果不存在则同步登录信息
+      if (!userInfo) {
+        let { info } = await queryUserInfoAsync();
+        userInfo = info;
+      }
+      // 如果已经登录且没有收藏信息则进行同步
+      if (userInfo && !storeList) {
+        queryStoreListAsync();
+      }
+    })();
+  }, []);
+
   /** methods部分 **/
   // 处理样式
   const handleStyle = (result) => {
@@ -56,6 +75,7 @@ const Detail = (props) => {
     link.href = css;
     document.head.appendChild(link);
   };
+
   const handleImage = (result) => {
     let imgPlaceHolder = document.querySelector('.img-place-holder');
     if (!imgPlaceHolder) return;
@@ -71,7 +91,59 @@ const Detail = (props) => {
     }
   };
 
-  /** styles部分 **/
+  const handleStore = async () => {
+    if (!userInfo) {
+      Toast.show({
+        icon: 'fail',
+        content: '请先登录'
+      });
+      navigate(`/login?to=${location.pathname}`, { replace: true });
+      return;
+    }
+    if (isStore) {
+      let item = storeList.find(item => {
+        return +item.news.id === +params.id;
+      });
+      if (!item) return;
+      let { code } = await api.storeRemove(item.id);
+      if (+code !== 0) {
+        Toast.show({
+          icon: 'fail',
+          content: '收藏失败'
+        });
+        return;
+      }
+      Toast.show({
+        icon: 'success',
+        content: '收藏成功'
+      });
+      removeStoreListById(item.id); // 从redux中移除
+      return;
+    }
+    try {
+      let { code } = await api.store(params.id);
+      if (+code !== 0) {
+        Toast.show({
+          icon: 'fail',
+          content: '收藏失败'
+        });
+        return;
+      }
+      Toast.show({
+        icon: 'success',
+        content: '收藏成功'
+      });
+      queryStoreListAsync(); // 同步最新收藏列表
+    } catch (_) {}
+  }
+
+  // 判断当前是否被收藏
+  const isStore = useMemo(() => {
+    if (!storeList) return false;
+    return storeList.some(item => {
+      return +item.news.id === +params.id;
+    });
+  }, [storeList, params]);
 
   /** render **/
   return (
@@ -93,7 +165,7 @@ const Detail = (props) => {
         <div className="icons">
           <Badge content={extra ? extra.comments : 0}><MessageOutline/></Badge>
           <Badge content={extra ? extra.popularity : 0}><LikeOutline/></Badge>
-          <span className={'stored'}><StarOutline/></span>
+          <span className={isStore ? 'stored' : ''} onClick={handleStore}><StarOutline/></span>
           <span><MoreOutline/></span>
         </div>
       </div>
@@ -101,4 +173,15 @@ const Detail = (props) => {
   );
 };
 
-export default Detail;
+export default connect(
+  state => {
+    return {
+      base: state.base,
+      store: state.store
+    };
+  },
+  {
+    ...action.base,
+    ...action.store
+  }
+)(Detail);

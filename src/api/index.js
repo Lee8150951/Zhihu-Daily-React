@@ -51,6 +51,23 @@ const login = (phone, code) => {
 // 获取用户信息
 const queryUserInfo = () => {
   return http.get('/api/user_info');
+};
+
+// 收藏
+const store = (newsId) => {
+  return http.post('/api/store', { newsId });
+};
+
+// 移除收藏
+const storeRemove = (id) => {
+  return http.get('/api/store_remove', {
+    params: { id }
+  });
+};
+
+// 获取收藏列表
+const storeList = () => {
+  return http.get('/api/store_list');
 }
 
 // 暴露API
@@ -61,7 +78,10 @@ const api = {
   queryNewsInfo,
   sendPhoneCode,
   login,
-  queryUserInfo
+  queryUserInfo,
+  store,
+  storeRemove,
+  storeList
 };
 
 export default api
