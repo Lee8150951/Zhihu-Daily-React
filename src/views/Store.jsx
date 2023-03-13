@@ -1,20 +1,43 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Store.less';
 import SkeletonAgain from '../components/SkeletonAgain';
 import NavBarAgain from '../components/NavBarAgain';
 import NewsItem from '../components/NewsItem';
-import { SwipeAction } from 'antd-mobile';
+import { SwipeAction, Toast } from 'antd-mobile';
 import { connect } from 'react-redux';
 import action from '../store/actions';
+import api from '../api';
 
 const Store = (props) => {
   let { list: storeList, queryStoreListAsync, removeStoreListById } = props;
   /** state部分 **/
 
   /** effect部分 **/
+  useEffect(() => {
+    // 如果redux中没有收藏列表，异步派发获取
+    if (!storeList) {
+      queryStoreListAsync();
+    }
+  }, [])
 
   /** methods部分 **/
-  const handleRemove = () => {};
+  const handleRemove = async (id) => {
+    try {
+      let { code } = await api.storeRemove(id);
+      if (+code !== 0) {
+        Toast.show({
+          icon: 'fail',
+          content: '移除失败'
+        });
+        return;
+      }
+      Toast.show({
+        icon: 'success',
+        content: '移除成功'
+      });
+      removeStoreListById(id);
+    } catch (_) {}
+  };
 
   /** render **/
   return (

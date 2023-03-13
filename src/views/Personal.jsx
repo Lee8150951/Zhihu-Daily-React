@@ -5,14 +5,27 @@ import NavBarAgain from '../components/NavBarAgain';
 import { connect } from 'react-redux';
 import action from '../store/actions';
 import './Personal.less';
+import _ from '../assets/utils';
+import { Toast } from 'antd-mobile';
 
 const Personal = (props) => {
+  let { info, clearUserInfo, clearStoreList, navigate } = props;
   /** state部分 **/
 
   /** effect部分 **/
 
   /** methods部分 **/
-  const signout = () => {
+  const signOut = () => {
+    // 清除redux信息
+    clearUserInfo();
+    clearStoreList();
+    // 清除Token信息
+    _.storage.remove('tk');
+    Toast.show({
+      icon: 'success',
+      content: '退出登录成功'
+    });
+    navigate('/login?to=/personal', { replace: true });
   };
 
   /** render **/
@@ -21,8 +34,8 @@ const Personal = (props) => {
       <NavBarAgain title="个人中心"/>
       <div className="baseInfo">
         <Link to="/update">
-          <img className="pic" alt=""/>
-          <p className="name">姓名</p>
+          <img className="pic" src={info.pic} alt=""/>
+          <p className="name">{info.name}</p>
         </Link>
       </div>
       <div>
@@ -30,7 +43,7 @@ const Personal = (props) => {
           我的收藏
           <RightOutline/>
         </Link>
-        <div className="tab" onClick={signout}>
+        <div className="tab" onClick={signOut}>
           退出登录
           <RightOutline/>
         </div>
